@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Details Checker</title>
+		<link rel="icon" type="image/png" href="favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+	</head>
+	<style>
+		.center {
+			margin: 0 auto; 
+			width:50%;	
+		}
+		
+		.formcenter {
+			margin: 0 auto; 
+			width:100%;	
+		}
+		
+		form  { display: table;  width:50%;    }
+		p     { display: table-row; width:15%; }
+		label { display: table-cell; width:22%;}
+		input { 
+			display: table-cell; 
+			width:25%;
+			font-family: 'Open Sans';
+			font-size: 18px;
+			font-style: normal;
+			font-variant: normal;
+			font-weight: 500;
+			line-height: 15.4px;
+		}
+		
+		h1 {
+			font-family: 'Open Sans';
+			font-size: 24px;
+			font-style: normal;
+			font-variant: normal;
+			font-weight: 500;
+			line-height: 26.4px;
+		}
+		h2 {
+			font-family: 'Open Sans';
+			font-size: 18px;
+			font-style: normal;
+			font-variant: normal;
+			font-weight: 500;
+			line-height: 15.4px;
+		}
+		h3 {
+			font-family: 'Open Sans';
+			font-size: 14px;
+			font-style: normal;
+			font-variant: normal;
+			font-weight: 500;
+			line-height: 15.4px;
+		}
+		h4 {
+			font-family: 'Open Sans';
+			font-size: 12px;
+			font-style: normal;
+			font-variant: normal;
+			font-weight: 500;
+			line-height: 26.4px;
+		}
+		
+	</style>
+	<body>
+	<!-- form to enter information required for the transaction -->
+		
+		
+		<div style="display:inline-block;vertical-align:top;">
+    		<img src="paymentsense1.jpg" alt="paymentsense"/>
+		</div>
+		<br>
+		<div style="display:inline-block;">
+		
+		<h1 class="formcenter">To be used to confirm gateway details when <b>'Hash Digest Does Not Match'</b> error occurs</h1> <br>
+		<form class="formcenter" action="process.php" method="post">
+			
+			<p>
+				<label for="hashMethod">Hash Method<br />(<strong>NOTE: By default this will be SHA1. Please don't change this unless you have also changed the setting in MMS</strong>):</label>
+				<select name="hashMethod">
+					<option value="SHA1">SHA1</option>
+					<option value="MD5">MD5</option>
+					<option value="HMACSHA1">HMACSHA1</option>
+					<option value="HMACMD5">HMACMD5</option>					
+				</select>
+				
+			</p>
+			<p>
+				<label for="merchantid">GatewayID:</label>
+				<input name="merchantid" type="text" value=""/>
+			</p>
+			<p>
+				<label for="password">Gateway Password:</label>
+				<input name="password" type="text" value=""/>
+			</p>
+			<p>
+				<label for="presharedKey">PresharedKey:</label>
+				<input name="presharedKey" type="text" value=""/>
+			</p>
+			<br>			
+			<input type="submit" style="float:left; width:50%;" value="Check" />			
+		</form>
+		
+		<br>
+		<h1 class="formcenter">If successfully transferred to the payment form then the details entered are correct.</h1> <br>
+		<h1 class="formcenter">If 'Hash Digest Does Not Match' error appears then the details entered are incorrect.</h1> <br>
+		
+		</div>
+		
+		<br><br>
+		<h4>Please use instructional video below on where obtain the correct gateway details</h4>
+		<video class="center"  controls>
+			
+  			<source src="gatewayDetails.mp4" type="video/mp4"></source>
+		</video>
+	</body>
+</html>
