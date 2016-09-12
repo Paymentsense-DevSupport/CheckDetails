@@ -1,120 +1,200 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="ISO-8859-1">
-		<title>Details Checker</title>
-		<link rel="icon" type="image/png" href="favicon.ico" />
-		<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
-	</head>
-	<style>
-		.center {
-			margin: 0 auto; 
-			width:50%;	
-		}
-		
-		.formcenter {
-			margin: 0 auto; 
-			width:100%;	
-		}
-		
-		form  { display: table;  width:50%;    }
-		p     { display: table-row; width:15%; }
-		label { display: table-cell; width:22%;}
-		input { 
-			display: table-cell; 
-			width:25%;
-			font-family: 'Open Sans';
-			font-size: 18px;
-			font-style: normal;
-			font-variant: normal;
-			font-weight: 500;
-			line-height: 15.4px;
-		}
-		
-		h1 {
-			font-family: 'Open Sans';
-			font-size: 24px;
-			font-style: normal;
-			font-variant: normal;
-			font-weight: 500;
-			line-height: 26.4px;
-		}
-		h2 {
-			font-family: 'Open Sans';
-			font-size: 18px;
-			font-style: normal;
-			font-variant: normal;
-			font-weight: 500;
-			line-height: 15.4px;
-		}
-		h3 {
-			font-family: 'Open Sans';
-			font-size: 14px;
-			font-style: normal;
-			font-variant: normal;
-			font-weight: 500;
-			line-height: 15.4px;
-		}
-		h4 {
-			font-family: 'Open Sans';
-			font-size: 12px;
-			font-style: normal;
-			font-variant: normal;
-			font-weight: 500;
-			line-height: 26.4px;
-		}
-		
-	</style>
-	<body>
-	<!-- form to enter information required for the transaction -->
-		
-		
-		<div style="display:inline-block;vertical-align:top;">
-    		<img src="paymentsense1.jpg" alt="paymentsense"/>
-		</div>
-		<br>
-		<div style="display:inline-block;">
-		
-		<h1 class="formcenter">To be used to confirm gateway details when <b>'Hash Digest Does Not Match'</b> error occurs</h1> <br>
-		<form class="formcenter" action="process.php" method="post">
-			
-			<p>
-				<label for="hashMethod">Hash Method<br />(<strong>NOTE: By default this will be SHA1. Please don't change this unless you have also changed the setting in MMS</strong>):</label>
-				<select name="hashMethod">
-					<option value="SHA1">SHA1</option>
-					<option value="MD5">MD5</option>
-					<option value="HMACSHA1">HMACSHA1</option>
-					<option value="HMACMD5">HMACMD5</option>					
-				</select>
-				
-			</p>
-			<p>
-				<label for="merchantid">GatewayID:</label>
-				<input name="merchantid" type="text" value=""/>
-			</p>
-			<p>
-				<label for="password">Gateway Password:</label>
-				<input name="password" type="text" value=""/>
-			</p>
-			<p>
-				<label for="presharedKey">PresharedKey:</label>
-				<input name="presharedKey" type="text" value=""/>
-			</p>
-			<br>			
-			<input type="submit" style="float:left; width:50%;" value="Check" />			
-		</form>
-		
-		<br>
-		<h1 class="formcenter">If successfully transferred to the payment form then the details entered are correct.</h1> <br>
-		<h1 class="formcenter">If 'Hash Digest Does Not Match' error appears then the details entered are incorrect.</h1> <br>
-		
-		</div>
-		
-		<br><br>
-		<h4>Please use instructional video below on where obtain the correct gateway details</h4>
-		<video class="center"  controls>
-			
-  			<source src="gatewayDetails.mp4" type="video/mp4"></source>
-		</video>
-	</body>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Paymentsense Gateway Details Checker</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/form-elements.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicon and touch icons -->
+    <link rel="shortcut icon" href="assets/ico/favicon.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+
+</head>
+
+<body>
+
+<!-- Top content -->
+<div class="top-content">
+
+    <div class="inner-bg">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 text">
+                    <img src="img/PaymentSenseLogo.png" alt="paymentsense" style="width: 300px;"/>
+                    <h1> Gateway Details Validator </h1>
+                    <div class="description">
+                        <p>
+                            Enter your gateway details to check they are valid and resolve <strong>Hash Digest Does Not
+                            Match</strong> errors.
+                            If successfully transferred to the payment form then the details entered are correct.
+                            If 'Hash Digest Does Not Match' error appears then the details entered are incorrect.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-5">
+
+                    <div class="form-box">
+                        <div class="form-top">
+                            <div class="form-top-left">
+                                <h3>Enter Your Gateway Details</h3>
+                                <p></p>
+                            </div>
+                            <div class="form-top-right">
+                                <i class="fa fa-info paymentsense-blue"></i>
+                            </div>
+                        </div>
+                        <div class="form-bottom">
+                            <form role="form" action="process.php" method="post" class="form-horizontal">
+
+                                <div class="form-group">
+                                    <label class="col-lg-6" for="hashMethod">Hash Method <i data-toggle="tooltip"
+                                                                                            class="fa fa-question-circle"
+                                                                                            title="By default this will be SHA1."></i></label>
+
+
+                                    <div>
+
+                                        <select class="form-control" name="hashMethod">
+                                            <option value="SHA1">SHA1</option>
+                                            <option value="MD5">MD5</option>
+                                            <option value="HMACSHA1">HMACSHA1</option>
+                                            <option value="HMACMD5">HMACMD5</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-lg-6" for="merchantid">GatewayID <i data-toggle="tooltip"
+                                                                                          class="fa fa-question-circle"
+                                                                                          title="Found in MMS under Account Admin -> Gateway Account Admin."></i></label>
+
+                                    <div>
+                                        <input name="merchantid" type="text" placeholder="Gateway ID"
+                                               class="form-control"/>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="col-lg-6" for="password">Gateway Password <i data-toggle="tooltip"
+                                                                                               class="fa fa-question-circle"
+                                                                                               title="Found in MMS under Account Admin -> Gateway Account Admin."></i></label>
+
+                                    <div>
+                                        <input type="text" placeholder="Password" name="password" class="form-control"/>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-lg-6" for="presharedKey">PresharedKey <i data-toggle="tooltip"
+                                                                                               class="fa fa-question-circle"
+                                                                                               title=""></i></label>
+                                    <div>
+                                        <input type="text" placeholder="Pre-Shared Key" name="presharedKey"
+                                               class="form-control"/>
+                                    </div>
+                                </div>
+
+                                <br/>
+                                <button type="submit" class="btn btn-default">Check Details</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-1 middle-border"></div>
+                <div class="col-lg-1"></div>
+
+                <div class="col-lg-5">
+
+                    <div class="form-box">
+                        <div class="form-top">
+                            <div class="form-top-left">
+                                <h3>Where Do I Find My Gateway Details?</h3>
+                            </div>
+                            <div class="form-top-right">
+                                <i class="fa fa-question paymentsense-blue"></i>
+                            </div>
+                        </div>
+                        <div class="form-bottom">
+                            <div align="center" class="embed-responsive embed-responsive-16by9">
+                                <video width="640" height="360" controls class="embed-responsive-item">
+                                    <source src=video/gatewayDetails.mp4 type=video/mp4>
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+
+            <div class="col-sm-8 col-sm-offset-2">
+                <div class="footer-border"></div>
+                <p>&copy; 2006 -
+                    <script language="JAVASCRIPT"
+                            type="text/javascript">document.write(new Date().getFullYear())</script>
+                    PaymentSense Ltd.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<!-- Javascript -->
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/scripts.js"></script>
+
+<!--[if lt IE 10]>
+<script src="js/placeholder.js"></script>
+<![endif]-->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+
+</body>
+
 </html>

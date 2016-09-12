@@ -16,7 +16,7 @@
    
     
     $hashMethod = $_POST['hashMethod'];
-    $resultDeliveryMethod = '2';
+    $resultDeliveryMethod = 'SERVER';
     
     $echoAVScheckResult = 'true';
     $echoCV2CheckResult = 'true';
